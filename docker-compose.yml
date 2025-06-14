@@ -6,11 +6,10 @@ services:
     container_name: gluetun
     environment:
       - TZ=Europe/Paris
-      - VPN_SERVICE_PROVIDER=$(VPN_SERVICE_PROVIDER) # e.g., "mullvad", "nordvpn", etc.
+      - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER} # e.g., "mullvad", "nordvpn", etc.
       - OPENVPN_USER=${OPENVPN_USER}
       - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
       - SERVER_COUNTRIES=${SERVER_COUNTRIES:-Netherlands} # Optional: preferred country
-      - OPENVPN_ENCRYPTION=256 # Optional: set encryption strength
     cap_add:
       - NET_ADMIN # Required for VPN container to manage network
     volumes:

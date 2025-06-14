@@ -22,6 +22,7 @@ services:
       - 9696:9696   # Prowlarr (through VPN)
       - 8081:8081   # qBittorrent WebUI (through VPN)
       - 6789:6789   # NZBGet (through VPN)
+      - 3579:3579   # Jellyseerr (through VPN)
     restart: unless-stopped
 
   qbittorrent:
@@ -118,8 +119,7 @@ services:
   jellyseerr:
     image: fallenbagel/jellyseerr
     container_name: jellyseerr
-    ports:
-      - 3579:3579 # Jellyseerr web interface (direct, not through VPN)
+    network_mode: "service:gluetun" # Shares network with gluetun (VPN)
     environment:
       - TZ=Europe/Paris
     volumes:

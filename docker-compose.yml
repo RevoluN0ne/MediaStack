@@ -16,14 +16,11 @@ services:
     volumes:
       - ${CONFIG_PATH}/gluetun:/gluetun # Gluetun config storage
     ports:
-      - 8080:8080   # Jellyfin (through VPN)
-      - 8096:8096   # Jellyfin alt (through VPN)
       - 6881:6881   # qBittorrent TCP (through VPN)
       - 6881:6881/udp # qBittorrent UDP (through VPN)
       - 8989:8989   # Sonarr (through VPN)
       - 7878:7878   # Radarr (through VPN)
       - 9696:9696   # Prowlarr (through VPN)
-      - 3579:3579   # Jellyseerr (through VPN)
       - 8081:8081   # qBittorrent WebUI (through VPN)
       - 6789:6789   # NZBGet (through VPN)
     restart: unless-stopped
